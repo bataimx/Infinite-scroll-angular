@@ -1,0 +1,8 @@
+.blog-card {
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.mat-card-title {
+  white-space: nowrap;
+  overflow: hidden;
+}

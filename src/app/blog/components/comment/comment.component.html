@@ -1,0 +1,8 @@
+<mat-card *ngIf="comment" class="comment-card">
+  <mat-card-subtitle
+    >{{ comment.name }} - {{ comment.email }}</mat-card-subtitle
+  >
+  <mat-card-content>
+    <p>{{ comment.body }}</p>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,19 @@
+<!-- <p>infinite-scroll works!</p> -->
+<div class="scroll-area" #scrollArea>
+  <div [style.minHeight]="fixScrollHeight + 'px'">
+    <div
+      class="firstPager"
+      #firstPager
+      [style.transform]="'translateY(' + firstScrollOffset + 'px)'"
+    >
+      <app-blog-list [data]="firstList"></app-blog-list>
+    </div>
+    <div
+      #secondPager
+      class="secondPager"
+      [style.transform]="'translateY(' + secondScrollOffset + 'px)'"
+    >
+      <app-blog-list [data]="secondList"></app-blog-list>
+    </div>
+  </div>
+</div>

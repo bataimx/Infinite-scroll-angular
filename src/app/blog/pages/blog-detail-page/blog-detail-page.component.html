@@ -1,0 +1,11 @@
+<app-blog-item [data]="blogDetail"></app-blog-item>
+<mat-divider></mat-divider>
+<div *ngIf="comments">
+  <h5>Comments</h5>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <app-comment [data]="item" *ngFor="let item of comments"></app-comment>
+    </div>
+  </div>
+</div>

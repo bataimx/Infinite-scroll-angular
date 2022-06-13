@@ -1,0 +1,28 @@
+<ng-container *ngFor="let item of List; let i = index">
+  <ng-container *ngIf="i === List.length - 2">
+    <mat-card #lastItem [routerLink]="['/blog', item.id]" class="blog-card">
+      <mat-card-title>[{{ item.id }}] {{ item.title }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ item.body }}</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+  <ng-container *ngIf="i === 2">
+    <mat-card #firstItem [routerLink]="['/blog', item.id]" class="blog-card">
+      <mat-card-title>[{{ item.id }}] {{ item.title }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ item.body }}</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+  <ng-container *ngIf="![List.length - 2, 2].includes(i)">
+    <mat-card [routerLink]="['/blog', item.id]" class="blog-card">
+      <mat-card-title>[{{ item.id }}] {{ item.title }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ item.body }}</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</ng-container>
