@@ -13,7 +13,6 @@ import { BlogListPageComponent } from './pages/blog-list-page/blog-list-page.com
 import { BlogDetailPageComponent } from './pages/blog-detail-page/blog-detail-page.component';
 import { InfiniteScrollComponent } from './components/infinite-scroll/infinite-scroll.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { BlogService } from './services/blog.service';
 
 const ComponentExports = [
   MenuComponent,
@@ -35,7 +34,6 @@ const ComponentExports = [
     BlogRoutingModule,
     ScrollingModule,
   ],
-  providers: [BlogService],
   declarations: ComponentExports,
   exports: ComponentExports,
 })

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { map, switchMap } from 'rxjs/operators';
+import { CommentService } from '../../../provider/comment.service';
+import { LocatorService } from '../../../provider/locator.service';
 import { BlogService } from '../../services/blog.service';
 
 @Component({
@@ -14,26 +16,30 @@ export class BlogDetailPageComponent implements OnInit {
   public comments: any[];
   constructor(
     private activedRoute: ActivatedRoute,
-    private blogService: BlogService,
-    private spinner: NgxSpinnerService
+    private ls: LocatorService
   ) {}
 
   ngOnInit() {
-    this.spinner.show();
+    this.ls.getService<NgxSpinnerService>(NgxSpinnerService).show();
     this.activedRoute.paramMap
       .pipe(
         map((params) => params.get('id')),
         map((id) => {
-          this.blogService.getCommentsByBlogId(id).then((resp) => {
-            this.comments = resp;
-          });
+          this.ls
+            .getService<CommentService>(CommentService)
+            .getCommentsByBlogId(id)
+            .then((resp) => {
+              this.comments = resp;
+            });
           return id;
         }),
-        switchMap((id) => this.blogService.getBlogById(id))
+        switchMap((id) =>
+          this.ls.getService<BlogService>(BlogService).getBlogById(id)
+        )
       )
       .subscribe((resp) => {
         this.blogDetail = resp;
-        this.spinner.hide();
+        this.ls.getService<NgxSpinnerService>(NgxSpinnerService).hide();
       });
   }
 }

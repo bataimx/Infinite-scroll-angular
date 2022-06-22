@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BlogAlbumComponent } from './pages/blog-album/blog-album.component';
 import { AboutComponent } from './pages/about/about.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ProviderModule } from './provider/provider.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     FormsModule,
     MatGridListModule,
+    ProviderModule,
     BlogModule,
     NgxSpinnerModule,
     AppRoutingModule,
