@@ -4,7 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { map, switchMap } from 'rxjs/operators';
 import { CommentService } from '../../../provider/comment.service';
 import { LocatorService } from '../../../provider/locator.service';
-import { BlogService } from '../../services/blog.service';
+import { BlogService } from '../../../provider/blog.service';
 
 @Component({
   selector: 'app-blog-detail-page',

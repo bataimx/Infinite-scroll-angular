@@ -9,7 +9,6 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BlogService } from '../../services/blog.service';
+import { BlogService } from '../../../provider/blog.service';
 
 @Component({
   selector: 'app-blog-list-page',
@@ -11,15 +11,19 @@ export class BlogListPageComponent implements OnInit {
   public dataList: any[] = [];
 
   constructor(
+    private injector: Injector,
     private blogService: BlogService,
     private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
     this.spinner.show();
-    this.blogService.getBlogList().then((resp) => {
-      this.dataList = resp;
-      this.spinner.hide();
-    });
+    this.injector
+      .get(BlogService)
+      .getBlogList()
+      .then((resp) => {
+        this.dataList = resp;
+        this.spinner.hide();
+      });
   }
 }
