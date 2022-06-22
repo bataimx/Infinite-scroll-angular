@@ -10,11 +10,7 @@ import { BlogService } from '../../../provider/blog.service';
 export class BlogListPageComponent implements OnInit {
   public dataList: any[] = [];
 
-  constructor(
-    private injector: Injector,
-    private blogService: BlogService,
-    private spinner: NgxSpinnerService
-  ) {}
+  constructor(private injector: Injector, private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
     this.spinner.show();
