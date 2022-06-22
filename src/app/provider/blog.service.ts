@@ -1,10 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
+import { LocatorService } from './locator.service';
 import { UserService } from './user.service';
 
 @Injectable()
 export class BlogService {
   protected posts: any[] = [];
-  constructor(private injector: Injector) {}
+  constructor(private ls: LocatorService) {}
 
   getBlogList(): Promise<any> {
     return new Promise(async (resolve) => {
@@ -23,8 +24,9 @@ export class BlogService {
       const post: any = await fetch(
         `https://jsonplaceholder.typicode.com/posts/${id}`
       ).then((resp) => resp.json());
-      const user: any = await this.injector
-        .get(UserService)
+
+      const user = await this.ls
+        .getService<UserService>(UserService)
         .getUser(post.userId)
         .then((resp) => resp);
       post.user = user;
